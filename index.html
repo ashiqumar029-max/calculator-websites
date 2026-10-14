@@ -1,118 +1,83 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="theme-color" content="#0b1020" />
-  <title>NUMI Scientific — Advanced Calculator</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#0a0b12">
+  <title>VAULT — Private Space</title>
+  <link rel="stylesheet" href="style.css">
   <script src="script.js" defer></script>
 </head>
 <body>
-  <div class="app-shell">
+  <main class="app">
     <header class="topbar">
-      <a class="brand" href="#" aria-label="NUMI Scientific home">
-        <span class="brand-mark">N</span>
-        <span><strong>NUMI</strong><small>SCIENTIFIC</small></span>
+      <a class="brand" href="#" aria-label="VAULT home">
+        <span class="brand-icon">V</span>
+        <span><strong>VAULT</strong><small>PRIVATE SPACE</small></span>
       </a>
-      <div class="top-actions">
-        <span class="mode-pill"><span class="status-dot"></span> Scientific mode</span>
-        <button id="themeToggle" class="icon-btn" type="button" aria-label="Switch theme">☀</button>
-      </div>
+      <span class="privacy-pill"><i></i> Local-only demo</span>
     </header>
 
-    <main class="layout">
-      <section class="calculator-card" aria-label="Scientific calculator">
-        <div class="section-heading">
-          <div>
-            <p class="eyebrow">PRECISION TOOLKIT</p>
-            <h1>Scientific Calculator</h1>
-            <p class="subheading">Everyday math, advanced functions.</p>
-          </div>
-          <div class="angle-switch" aria-label="Angle mode">
-            <button class="angle-btn active" data-angle="DEG" type="button">DEG</button>
-            <button class="angle-btn" data-angle="RAD" type="button">RAD</button>
-          </div>
+    <section class="hero">
+      <div class="hero-orb"></div>
+      <p class="eyebrow">YOUR SPACE. YOUR RULES.</p>
+      <h1>A little privacy<br><span>goes a long way.</span></h1>
+      <p class="hero-copy">A discreet space for your personal notes. Open it with your private code.</p>
+    </section>
+
+    <section class="vault-card" aria-label="Private vault access">
+      <div class="lock-emblem"><span id="lockIcon">⌑</span></div>
+      <p class="eyebrow" id="panelEyebrow">PRIVATE ACCESS</p>
+      <h2 id="panelTitle">Enter your secret code</h2>
+      <p class="panel-copy" id="panelCopy">Type your code below to unlock your private space.</p>
+
+      <div class="code-dots" id="codeDots" aria-hidden="true">
+        <span></span><span></span><span></span><span></span><span></span><span></span>
+      </div>
+      <input id="codeInput" class="code-input" type="password" inputmode="numeric" maxlength="64"
+        autocomplete="off" placeholder="Enter code" aria-label="Secret code">
+      <button id="unlockBtn" class="primary-btn" type="button">Unlock vault <span>↗</span></button>
+      <button id="setupBtn" class="text-btn" type="button">First time here? Set up a code</button>
+      <p id="message" class="message" role="status" aria-live="polite"></p>
+      <p class="hint">Tip: your chosen code can be a memorable word or number.</p>
+    </section>
+
+    <section id="privateArea" class="private-area" hidden>
+      <div class="private-header">
+        <div>
+          <p class="eyebrow">UNLOCKED</p>
+          <h2>Your private notes</h2>
         </div>
+        <button id="lockBtn" class="secondary-btn" type="button">Lock now</button>
+      </div>
+      <p class="private-description">Add notes here. They are saved in this browser on this device.</p>
+      <label for="privateNotes">Private notes</label>
+      <textarea id="privateNotes" rows="8" placeholder="Write something only you need to see..."></textarea>
+      <div class="notes-footer">
+        <span id="saveStatus">Saved locally in this browser</span>
+        <button id="clearNotesBtn" class="text-btn danger" type="button">Clear notes</button>
+      </div>
+    </section>
 
-        <div class="display-panel">
-          <div class="display-meta">
-            <span id="expressionPreview">Ready for your next calculation</span>
-            <button id="copyResult" class="copy-btn" type="button" title="Copy displayed value">Copy</button>
-          </div>
-          <div id="display" class="display" aria-live="polite">0</div>
-          <div id="displayStatus" class="display-status">DEG · SCIENTIFIC</div>
-        </div>
+    <footer><span>VAULT</span> is a privacy-themed demo, not a secure encrypted vault.</footer>
+  </main>
 
-        <div class="keypad" id="keypad">
-          <button class="key function" data-action="clear" type="button">AC</button>
-          <button class="key function" data-action="delete" type="button">DEL</button>
-          <button class="key function" data-value="(" type="button">(</button>
-          <button class="key function" data-value=")" type="button">)</button>
-          <button class="key operator" data-value="÷" type="button">÷</button>
-
-          <button class="key function" data-value="sin(" type="button">sin</button>
-          <button class="key function" data-value="cos(" type="button">cos</button>
-          <button class="key function" data-value="tan(" type="button">tan</button>
-          <button class="key function" data-value="√(" type="button">√</button>
-          <button class="key operator" data-value="×" type="button">×</button>
-
-          <button class="key function" data-value="ln(" type="button">ln</button>
-          <button class="key function" data-value="log(" type="button">log</button>
-          <button class="key function" data-value="π" type="button">π</button>
-          <button class="key function" data-value="e" type="button">e</button>
-          <button class="key operator" data-value="−" type="button">−</button>
-
-          <button class="key number" data-value="7" type="button">7</button>
-          <button class="key number" data-value="8" type="button">8</button>
-          <button class="key number" data-value="9" type="button">9</button>
-          <button class="key function" data-value="^" type="button">xʸ</button>
-          <button class="key operator" data-value="+" type="button">+</button>
-
-          <button class="key number" data-value="4" type="button">4</button>
-          <button class="key number" data-value="5" type="button">5</button>
-          <button class="key number" data-value="6" type="button">6</button>
-          <button class="key function" data-value="!" type="button">x!</button>
-          <button class="key function" data-action="percent" type="button">%</button>
-
-          <button class="key number" data-value="1" type="button">1</button>
-          <button class="key number" data-value="2" type="button">2</button>
-          <button class="key number" data-value="3" type="button">3</button>
-          <button class="key function" data-value="Ans" type="button">Ans</button>
-          <button class="key equals" data-action="equals" type="button">=</button>
-
-          <button class="key function" data-action="sign" type="button">±</button>
-          <button class="key number zero" data-value="0" type="button">0</button>
-          <button class="key number" data-value="." type="button">.</button>
-          <button class="key function" data-value="abs(" type="button">|x|</button>
-          <button class="key function" data-value="%" type="button">mod</button>
-        </div>
-        <p class="keyboard-hint"><kbd>Enter</kbd> calculate <span>·</span> <kbd>Esc</kbd> clear <span>·</span> <kbd>Backspace</kbd> delete</p>
-      </section>
-
-      <aside class="side-column">
-        <section class="side-card">
-          <div class="side-title">
-            <div><p class="eyebrow">YOUR WORKSPACE</p><h2>History</h2></div>
-            <button id="clearHistory" class="text-btn" type="button">Clear</button>
-          </div>
-          <div id="historyList" class="history-list">
-            <p class="empty-history">Your calculations will appear here.</p>
-          </div>
-        </section>
-        <section class="side-card tips-card">
-          <p class="eyebrow">QUICK GUIDE</p>
-          <h2>Make the most of it</h2>
-          <ul>
-            <li><span class="tip-icon">π</span><span><strong>Constants</strong><small>Insert π or Euler's number e.</small></span></li>
-            <li><span class="tip-icon">∠</span><span><strong>Angle mode</strong><small>Switch between degrees and radians.</small></span></li>
-            <li><span class="tip-icon">xʸ</span><span><strong>Powers & roots</strong><small>Use xʸ, square root and factorial.</small></span></li>
-          </ul>
-        </section>
-      </aside>
-    </main>
-    <footer>NUMI Scientific <span>·</span> Thoughtful tools for curious minds.</footer>
-  </div>
+  <dialog id="setupDialog" class="setup-dialog">
+    <form method="dialog" id="setupForm">
+      <p class="eyebrow">CREATE YOUR ACCESS CODE</p>
+      <h2>Set up your vault</h2>
+      <p class="dialog-copy">Choose a code and confirm it. Use at least 6 characters.</p>
+      <label for="newCode">New code</label>
+      <input id="newCode" type="password" minlength="6" maxlength="64" autocomplete="new-password" required>
+      <label for="confirmCode">Confirm code</label>
+      <input id="confirmCode" type="password" minlength="6" maxlength="64" autocomplete="new-password" required>
+      <p id="setupMessage" class="message" role="status"></p>
+      <div class="dialog-actions">
+        <button id="cancelSetup" class="secondary-btn" type="button">Cancel</button>
+        <button class="primary-btn" type="submit">Save code</button>
+      </div>
+    </form>
+  </dialog>
   <div id="toast" class="toast" role="status" aria-live="polite"></div>
 </body>
 </html>
