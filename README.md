@@ -1,24 +1,20 @@
-# NUMI — Smart Calculator
+# NUMI Scientific Calculator
 
-A responsive standard calculator built with HTML, CSS, and vanilla JavaScript.
+A responsive scientific calculator built with HTML, CSS, and vanilla JavaScript.
 
 ## Features
-- Addition, subtraction, multiplication, division
-- Decimal numbers, sign toggle, percentage, backspace, clear
-- Keyboard input support
-- Recent calculation history stored in LocalStorage
-- Click a history item to reuse its result
-- Light/dark theme toggle
-- Responsive desktop and mobile design
+- Arithmetic, parentheses, powers, factorial and modulo
+- Trigonometry with DEG/RAD modes
+- Square root, absolute value, natural log and base-10 log
+- Constants π and e, plus previous answer (Ans)
+- Persistent calculation history and theme preference
+- Keyboard shortcuts and copy-result action
+- Expression parser that avoids `eval()` and `Function()`
 
 ## Run locally
-Keep `index.html`, `style.css`, and `script.js` in the same folder, then open `index.html` in a browser. VS Code Live Server is also supported.
+Open `index.html` in a modern browser. For clipboard support, a local development server may be needed.
 
-## Project files
-- `index.html` — structure
-- `style.css` — layout and design
-- `script.js` — calculator logic and history
-- `README.md` — project notes
-
-## Portfolio note
-This is a client-side portfolio project. Calculation history is saved in the current browser only.
+## Files
+- `index.html` — page structure
+- `style.css` — responsive styling and themes
+- `script.js` — calculator logic
