@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#0c1020">
+  <title>NUMI — Smart Calculator</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="app">
+    <header class="topbar">
+      <a class="brand" href="#"><span class="brand-icon">N</span><span>numi<span class="brand-dot">.</span></span></a>
+      <div class="top-right"><span class="status-dot"></span><span>SMART CALCULATOR</span><button id="themeToggle" class="theme-toggle" aria-label="Toggle light and dark theme" title="Toggle theme">☼</button></div>
+    </header>
+
+    <section class="intro">
+      <div class="eyebrow"><span></span> SIMPLE MATH. CLEAN THINKING.</div>
+      <h1>Numbers, <em>made easy.</em></h1>
+      <p>A beautifully simple calculator for your everyday math.</p>
+    </section>
+
+    <section class="calculator-layout">
+      <div class="calculator" aria-label="Calculator">
+        <div class="calc-top"><span class="calc-label">STANDARD</span><button id="historyToggle" class="history-button" type="button">↶ <span>History</span></button></div>
+        <div class="display">
+          <div id="expression" class="expression" aria-live="polite">&nbsp;</div>
+          <div id="displayValue" class="display-value" aria-live="polite">0</div>
+        </div>
+        <div class="keypad" id="keypad">
+          <button class="key utility" data-action="clear">AC</button>
+          <button class="key utility" data-action="sign">±</button>
+          <button class="key utility" data-action="percent">%</button>
+          <button class="key operator" data-value="÷">÷</button>
+          <button class="key" data-value="7">7</button>
+          <button class="key" data-value="8">8</button>
+          <button class="key" data-value="9">9</button>
+          <button class="key operator" data-value="×">×</button>
+          <button class="key" data-value="4">4</button>
+          <button class="key" data-value="5">5</button>
+          <button class="key" data-value="6">6</button>
+          <button class="key operator" data-value="−">−</button>
+          <button class="key" data-value="1">1</button>
+          <button class="key" data-value="2">2</button>
+          <button class="key" data-value="3">3</button>
+          <button class="key operator" data-value="+">+</button>
+          <button class="key utility" data-action="backspace" aria-label="Backspace">⌫</button>
+          <button class="key" data-value="0">0</button>
+          <button class="key" data-value=".">.</button>
+          <button class="key equals" data-action="equals">=</button>
+        </div>
+        <div class="calc-foot"><span><kbd>Enter</kbd> calculate</span><span><kbd>Esc</kbd> clear</span></div>
+      </div>
+
+      <aside class="side-panel">
+        <div class="panel-heading"><div><span class="mini-eyebrow">YOUR WORKSPACE</span><h2>Calculation history</h2></div><button id="clearHistory" class="clear-history" type="button">Clear all</button></div>
+        <div id="historyList" class="history-list"><div class="history-empty"><span>↶</span><strong>No calculations yet</strong><p>Your recent calculations will show up here.</p></div></div>
+        <div class="tip-card"><div class="tip-icon">✦</div><div><strong>Quick tip</strong><p>You can also use your keyboard to enter numbers and operators.</p></div></div>
+      </aside>
+    </section>
+    <footer><span>NUMI<span class="brand-dot">.</span></span><span>Thoughtful tools for everyday life.</span><span>01 / 03</span></footer>
+  </main>
+  <div id="toast" class="toast" role="status"></div>
+  <script src="script.js"></script>
+</body>
+</html>
